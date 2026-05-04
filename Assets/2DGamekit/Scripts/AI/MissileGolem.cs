@@ -319,6 +319,7 @@ public class MissileGolem : MonoBehaviour
             g.SetActive(true);
         }
         round++;
+        Debug.Log("Current round is " + round);
 
         if (round == 2)
         {

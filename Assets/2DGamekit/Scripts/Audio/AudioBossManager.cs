@@ -114,15 +114,15 @@ public class AudioBossManager : MonoBehaviour
     
     public void BossSteamStage(GameObject boss, int steamStage)
     {
-        if (bossSteamStage.IsNull)
-        {
-            Debug.LogWarning("Fmod event not found: bossSteamStage");
-            return;
-        }
         switch (steamStage)
         {
             case 1:
                 bossMusicEmitter.SetParameter(stageParameter, stage1Value);
+                if (bossSteamStage.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossSteamStage");
+                    return;
+                }
                 eventInstance = RuntimeManager.CreateInstance(bossSteamStage);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("SteamStage", 1f);
@@ -131,6 +131,11 @@ public class AudioBossManager : MonoBehaviour
                 break;
             case 2:
                 bossMusicEmitter.SetParameter(stageParameter, stage2Value);
+                if (bossSteamStage.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossSteamStage");
+                    return;
+                }
                 eventInstance = RuntimeManager.CreateInstance(bossSteamStage);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("SteamStage", 2f);

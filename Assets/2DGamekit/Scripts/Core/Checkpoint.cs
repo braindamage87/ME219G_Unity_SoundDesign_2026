@@ -37,6 +37,11 @@ namespace Gamekit2D
 
         public void SetParameterOnGameOver()
         {
+            if (eventTag == "")
+            {
+                Debug.Log($"No event tag in {gameObject} for game over settings");
+                return;
+            }
             emitter = GameObject.FindGameObjectWithTag(eventTag).GetComponent<StudioEventEmitter>();
             AudioZoneSettings audioZoneSettings = FindObjectOfType<AudioZoneSettings>();
 
